@@ -1,29 +1,57 @@
-/* Celebration.css */
+/* Celebration.css - Enhanced confetti animation */
 .celebration-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  border-radius: 3px;
+  animation: fall linear forwards;
+  opacity: 0.9;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
   }
-  
-  .celebration-animation {
-    animation: celebrate 1s ease-in-out forwards;
+
+  100% {
+    transform: translateY(600px) rotate(720deg);
+    opacity: 0;
   }
-  
-  @keyframes celebrate {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
+}
+
+.celebration-emoji {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  animation: pop 0.5s ease-out forwards;
+  z-index: 16;
+}
+
+@keyframes pop {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
   }
-  
-  .confetti {
-    font-size: 3rem;
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
   }
-  
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
